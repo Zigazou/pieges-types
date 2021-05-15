@@ -1,0 +1,7 @@
+program = expr
+
+expr = spaces "(" spaces *(expr / term ) spaces ")" spaces
+
+term = 1*ALPHA
+
+spaces = *WSP

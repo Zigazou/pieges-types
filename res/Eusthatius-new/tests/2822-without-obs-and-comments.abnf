@@ -1,0 +1,235 @@
+; RFC 2822 grammar without obsolete productions (obs-*)
+
+NO-WS-CTL       =       %d1-8 /         ; US-ASCII control characters
+                        %d11 /          ;  that do not include the
+                        %d12 /          ;  carriage return, line feed,
+                        %d14-31 /       ;  and white space characters
+                        %d127
+
+text            =       %d1-9 /         ; Characters excluding CR and LF
+                        %d11 /
+                        %d12 /
+                        %d14-127 
+
+specials        =       "(" / ")" /     ; Special characters used in
+                        "<" / ">" /     ;  other parts of the syntax
+                        "[" / "]" /
+                        ":" / ";" /
+                        "@" / "\" /
+                        "," / "." /
+                        DQUOTE
+
+quoted-pair     =       ("\" text) 
+
+FWS             =       ([*WSP CRLF] 1*WSP)   ; Folding white space
+
+ctext           =       NO-WS-CTL /     ; Non white space controls
+                        %d33-39 /       ; The rest of the US-ASCII
+                        %d42-91 /       ;  characters not including "(",
+                        %d93-126        ;  ")", or "\"
+
+atext           =       ALPHA / DIGIT / ; Any character except controls,
+                        ("!" / "#" /     ;  SP, and specials.
+                        "$" / "%" /     ;  Used for atoms
+                        "&" / "'" /
+                        "*" / "+" /
+                        "-" / "/" /
+                        "=" / "?" /
+                        "^" / "_" /
+                        "`" / "{" /
+                        "|" / "}" /
+                        "~")
+
+atom            =       1*atext
+
+dot-atom        =       dot-atom-text
+
+dot-atom-text   =       1*atext *("." 1*atext)
+
+qtext           =       ;NO-WS-CTL /     ; Non white space controls
+                        %d33 /          ; The rest of the US-ASCII
+                        %d35-91 /       ;  characters not including "\"
+                        %d93-126        ;  or the quote character
+
+qcontent        =       qtext / quoted-pair
+
+quoted-string   =    
+                        DQUOTE *([FWS] qcontent) [FWS] DQUOTE
+
+word            =       atom / quoted-string
+
+phrase          =       1*word
+
+utext           =       NO-WS-CTL /     ; Non white space controls
+                        %d33-126       ; The rest of US-ASCII
+
+unstructured    =       *([FWS] utext) [FWS]
+
+date-time       =       [ day-of-week "," ] date FWS time [WSP]
+
+day-of-week     =       ([FWS] day-name) 
+
+day-name        =       "Mon" / "Tue" / "Wed" / "Thu" /
+                        "Fri" / "Sat" / "Sun"
+
+date            =       day month year
+
+year            =       4*DIGIT 
+
+month           =       (FWS month-name FWS) 
+
+month-name      =       "Jan" / "Feb" / "Mar" / "Apr" /
+                        "May" / "Jun" / "Jul" / "Aug" /
+                        "Sep" / "Oct" / "Nov" / "Dec"
+
+day             =       ([FWS] 1*2DIGIT) 
+
+time            =       time-of-day FWS zone
+
+time-of-day     =       hour ":" minute [ ":" second ]
+
+hour            =       2DIGIT 
+
+minute          =       2DIGIT 
+
+second          =       2DIGIT 
+
+zone            =       (( "+" / "-" ) 4DIGIT) 
+
+address         =       mailbox / group
+
+mailbox         =       name-addr / addr-spec
+
+name-addr       =       [display-name] angle-addr
+
+angle-addr      =       "<" addr-spec ">" 
+
+group           =       display-name ":" [mailbox-list / WSP] ";"
+                        [WSP]
+
+
+display-name    =       phrase
+
+mailbox-list    =       (mailbox *("," mailbox)) 
+
+address-list    =       (address *("," address)) 
+
+addr-spec       =       local-part "@" domain
+
+local-part      =       dot-atom ; / quoted-string 
+
+domain          =       dot-atom 
+
+domain-literal  =       "[" *([FWS] dcontent) [FWS] "]"
+
+dcontent        =       dtext / quoted-pair
+
+dtext           =       NO-WS-CTL /     ; Non white space controls
+                        %d33-90 /       ; The rest of the US-ASCII
+                        %d94-126        ;  characters not including "[",
+                                        ;  "]", or "\"
+
+message         =       fields
+                        [CRLF body]
+
+body            =       *(*998text CRLF) *998text
+
+fields          =       *(trace
+                          *(resent-date /
+                           resent-from /
+                           resent-sender /
+                           resent-to /
+                           resent-cc /
+                           resent-bcc /
+                           resent-msg-id))
+                        *(orig-date /
+                        from /
+                        sender /
+                        reply-to /
+                        to /
+                        cc /
+                        bcc /
+                        message-id /
+                        in-reply-to /
+                        references /
+                        subject /
+                        comments /
+                        keywords /
+                        optional-field)
+
+orig-date       =       "Date:" date-time CRLF
+
+from            =       "From:" mailbox-list CRLF
+
+sender          =       "Sender:" mailbox CRLF
+
+reply-to        =       "Reply-To:" address-list CRLF
+
+to              =       "To:" address-list CRLF
+
+cc              =       "Cc:" address-list CRLF
+
+bcc             =       "Bcc:" (address-list / [WSP]) CRLF
+
+message-id      =       "Message-ID:" msg-id CRLF
+
+in-reply-to     =       "In-Reply-To:" 1*msg-id CRLF
+
+references      =       "References:" 1*msg-id CRLF
+
+msg-id          =       [WSP] "<" id-left "@" id-right ">" [WSP]
+
+id-left         =       dot-atom-text / no-fold-quote 
+
+id-right        =       dot-atom-text / no-fold-literal 
+
+no-fold-quote   =       DQUOTE *(qtext / quoted-pair) DQUOTE
+
+no-fold-literal =       "[" *(dtext / quoted-pair) "]"
+
+subject         =       "Subject:" unstructured CRLF
+
+comments        =       "Comments:" unstructured CRLF
+
+keywords        =       "Keywords:" phrase *("," phrase) CRLF
+
+resent-date     =       "Resent-Date:" date-time CRLF
+
+resent-from     =       "Resent-From:" mailbox-list CRLF
+
+resent-sender   =       "Resent-Sender:" mailbox CRLF
+
+resent-to       =       "Resent-To:" address-list CRLF
+
+resent-cc       =       "Resent-Cc:" address-list CRLF
+
+resent-bcc      =       "Resent-Bcc:" (address-list / [WSP]) CRLF
+
+resent-msg-id   =       "Resent-Message-ID:" msg-id CRLF
+
+trace           =       [return]
+                        1*received
+
+return          =       "Return-Path:" path CRLF
+
+path            =       ([WSP] "<" ([WSP] / addr-spec) ">" [WSP]) 
+
+received        =       "Received:" name-val-list ";" date-time CRLF
+
+name-val-list   =       [WSP] [name-val-pair *(WSP name-val-pair)]
+
+name-val-pair   =       item-name WSP item-value
+
+item-name       =       ALPHA *(["-"] (ALPHA / DIGIT))
+
+item-value      =       1*angle-addr / addr-spec /
+                         atom / domain / msg-id
+
+optional-field  =       field-name ":" unstructured CRLF
+
+field-name      =       1*ftext
+
+ftext           =       %d33-57 /               ; Any character except
+                        %d59-126                ;  controls, SP, and
+                                                ;  ":".
+

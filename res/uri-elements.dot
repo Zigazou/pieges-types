@@ -1,0 +1,27 @@
+digraph URI {
+    uri -> scheme, COLON1, "hier-part", QUESTION1, query, SHARP, fragment;
+    "hier-part" -> DOUBLE_SLASH, authority, path;
+    authority -> userinfo, AT, host, COLON2, port;
+    host -> "IP-literal", IPv4address, "reg-name";
+    "IP-literal" -> LEFT_SQUARE_BRACKET, IPv6address, IPvFuture, RIGHT_SQUARE_BRACKET;
+    path -> SLASH1, segment;
+    query -> pchar1, SLASH2, QUESTION2;
+    fragment -> pchar2, SLASH3, QUESTION3;
+
+    COLON1 [label=":", shape=box];
+    COLON2 [label=":", shape=box];
+    SLASH1 [label="/", shape=box];
+    SLASH2 [label="/", shape=box];
+    SLASH3 [label="/", shape=box];
+    QUESTION1 [label="?", shape=box];
+    QUESTION2 [label="?", shape=box];
+    QUESTION3 [label="?", shape=box];
+    SHARP [label="#", shape=box];
+    DOUBLE_SLASH [label="//", shape=box];
+    AT [label="@", shape=box];
+    LEFT_SQUARE_BRACKET [label="[", shape=box];
+    RIGHT_SQUARE_BRACKET [label="]", shape=box];
+
+    pchar1 [label="pchar", shape=parallel];
+    pchar2 [label="pchar", shape=parallel];
+}

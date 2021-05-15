@@ -1,0 +1,35 @@
+; It is *not* the grammar in RFC 4646, we simplified it a bit by
+; removing grandfathered tags.
+
+Language-Tag  = langtag
+                 / privateuse             ; private use tag
+
+langtag       = (language
+                    ["-" script]
+                    ["-" region]
+                    *("-" variant)
+                    *("-" extension))
+
+language      = (2*3ALPHA [ extlang ]) ; shortest ISO 639 code
+                 / 4ALPHA                 ; reserved for future use
+                 / 5*8ALPHA               ; registered language subtag
+
+extlang       = *3("-" 3ALPHA)         ; reserved for future use
+
+script        = 4ALPHA                 ; ISO 15924 code
+
+region        = 2ALPHA                 ; ISO 3166 code
+                 / 3DIGIT                 ; UN M.49 code
+
+variant       = 5*8alphanum            ; registered variants
+                 / (DIGIT 3alphanum)
+
+extension     = singleton 1*("-" (2*8alphanum))
+
+singleton     = %x41-57 / %x59-5A / %x61-77 / %x79-7A / DIGIT
+                 ; "a"-"w" / "y"-"z" / "A"-"W" / "Y"-"Z" / "0"-"9"
+                 ; Single letters: x/X is reserved for private use
+
+privateuse    = ("x"/"X") 1*("-" (1*8alphanum))
+
+alphanum      = (ALPHA / DIGIT)       ; letters and numbers

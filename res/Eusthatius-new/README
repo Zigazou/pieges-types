@@ -1,0 +1,34 @@
+This is the README of program Eustathius (from the famous byzantine scholar)
+See http://en.wikipedia.org/wiki/Eustathius_of_Thessalonica
+*******************************************
+
+This is a test generator which takes as input ABNF grammars (as
+specified in IETF RFC 4234) and produces strings matching that
+grammar. This can be useful to test a grammar or to check a parser
+you've written (see the scripts in compare/ for examples).
+
+It is written in Haskell (http://www.haskell.org/). To run it, you
+need an Haskell compiler or interpreter (only ghc,
+http://haskell.org/ghc/, has been tested now). Then, type "make" to
+build the program.
+
+To use it, you have the following programs:
+
+* abnf-parse: parses a grammar, check its syntax and that all rules
+  are defined. Displays a compiled view of the grammar.
+
+* abnf-generate: parses a grammar, check its syntax and that all rules
+  are defined and generates text from the production named
+  "start". You can change the production's name with the "-s" option.
+
+It is distributed under the terms of the GNU General Public Licence
+(GPL) version 2.
+
+Bug reports, patches, advices and criticisms are welcome.
+
+Stephane Bortzmeyer <bortzmeyer@nic.fr>
+
+Thanks to:
+
+* Kim Minh Kaplan for fruitful discussions
+

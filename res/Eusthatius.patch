@@ -1,0 +1,118 @@
+diff -crBN Eusthatius-old/abnf-generate.hs Eusthatius-new/abnf-generate.hs
+*** Eusthatius-old/abnf-generate.hs	2006-10-26 14:47:28.000000000 +0200
+--- Eusthatius-new/abnf-generate.hs	2021-04-16 09:18:17.838730281 +0200
+***************
+*** 2,10 ****
+  import qualified Types
+  import qualified Generator
+  
+! import qualified System
+! import qualified IO
+! import qualified Distribution.GetOpt as GetOpt
+  
+  testIt verbose start filename = do
+      content <- IO.readFile filename
+--- 2,10 ----
+  import qualified Types
+  import qualified Generator
+  
+! import qualified System.Environment as Environment
+! import qualified System.IO as IO
+! import qualified System.Console.GetOpt as GetOpt
+  
+  testIt verbose start filename = do
+      content <- IO.readFile filename
+***************
+*** 68,74 ****
+  getOptionStore f = processFlags f
+  
+  main = do
+!   myargs <- System.getArgs
+    (results, nonoptargs) <- programOpts myargs
+    let opts = getOptionStore results
+    let start = option'start opts
+--- 68,74 ----
+  getOptionStore f = processFlags f
+  
+  main = do
+!   myargs <- Environment.getArgs
+    (results, nonoptargs) <- programOpts myargs
+    let opts = getOptionStore results
+    let start = option'start opts
+diff -crBN Eusthatius-old/abnf-parse.hs Eusthatius-new/abnf-parse.hs
+*** Eusthatius-old/abnf-parse.hs	2006-10-26 14:47:28.000000000 +0200
+--- Eusthatius-new/abnf-parse.hs	2021-04-16 09:17:04.762094204 +0200
+***************
+*** 1,7 ****
+  import qualified Types
+  import qualified Parse
+! import qualified System
+! import qualified IO
+  
+  displayProduction :: Parse.ABNF -> Parse.Rule -> IO ()
+  displayProduction abnf rulename = do
+--- 1,7 ----
+  import qualified Types
+  import qualified Parse
+! import qualified System.Environment as Environment
+! import qualified System.IO as IO
+  
+  displayProduction :: Parse.ABNF -> Parse.Rule -> IO ()
+  displayProduction abnf rulename = do
+***************
+*** 31,35 ****
+     return (newHead : newTail)
+  
+  main = do
+!    args <- System.getArgs
+     foreach args testIt  
+--- 31,35 ----
+     return (newHead : newTail)
+  
+  main = do
+!    args <- Environment.getArgs
+     foreach args testIt  
+diff -crBN Eusthatius-old/Parse.hs Eusthatius-new/Parse.hs
+*** Eusthatius-old/Parse.hs	2006-10-26 14:47:28.000000000 +0200
+--- Eusthatius-new/Parse.hs	2021-04-16 09:12:20.137077000 +0200
+***************
+*** 1,10 ****
+  module Parse where
+  
+  import Text.ParserCombinators.Parsec as Parsec hiding (spaces, newline, option)
+! import qualified Monad
+  import Data.Maybe
+  import Prelude hiding (repeat)
+! import qualified List
+  import qualified Numeric
+  import qualified Data.Char as Char
+  import qualified Data.Map as Map
+--- 1,10 ----
+  module Parse where
+  
+  import Text.ParserCombinators.Parsec as Parsec hiding (spaces, newline, option)
+! import qualified Control.Monad as Monad
+  import Data.Maybe
+  import Prelude hiding (repeat)
+! import qualified Data.List as List
+  import qualified Numeric
+  import qualified Data.Char as Char
+  import qualified Data.Map as Map
+diff -crBN Eusthatius-old/Types.hs Eusthatius-new/Types.hs
+*** Eusthatius-old/Types.hs	2006-10-26 14:47:28.000000000 +0200
+--- Eusthatius-new/Types.hs	2021-04-16 09:11:35.285191765 +0200
+***************
+*** 1,6 ****
+  module Types where
+  
+! import qualified List
+  import qualified Data.Char as Char
+  
+  infinite = 10::Int -- Arbitrary limit
+--- 1,6 ----
+  module Types where
+  
+! import qualified Data.List as List
+  import qualified Data.Char as Char
+  
+  infinite = 10::Int -- Arbitrary limit

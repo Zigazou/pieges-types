@@ -1,0 +1,15 @@
+; This is *not* the official grammar (which you can find in RFC 2822)
+; but a very simplified version
+
+start = address
+
+address = local-part "@" domain
+
+ALPHANUM = ALPHA / DIGIT
+
+LDH = ALPHA / DIGIT / "-"
+
+label = ALPHANUM 0*62LDH
+domain = label *5("." label)
+
+local-part = ALPHANUM *127(ALPHA / DIGIT / "+" / ".")

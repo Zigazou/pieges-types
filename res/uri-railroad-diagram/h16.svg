@@ -1,0 +1,48 @@
+<svg class="railroad-diagram" height="87" viewBox="0 0 534.0 87" width="534.0" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(.5 .5)">
+<style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style><g>
+<path d="M20 46v20m10 -20v20m-10 -10h20"></path></g><path d="M40 56h10"></path><g>
+<path d="M50 56h0.0"></path><path d="M484.0 56h0.0"></path><g class="non-terminal ">
+<path d="M50.0 56h0.0"></path><path d="M121.0 56h0.0"></path><rect height="22" width="71.0" x="50.0" y="45"></rect><text x="85.5" y="60">HEXDIG</text></g><path d="M121.0 56h10"></path><g>
+<path d="M131.0 56h0.0"></path><path d="M484.0 56h0.0"></path><path d="M131.0 56a10 10 0 0 0 10 -10v-16a10 10 0 0 1 10 -10"></path><g>
+<path d="M151.0 20h313.0"></path></g><path d="M464.0 20a10 10 0 0 1 10 10v16a10 10 0 0 0 10 10"></path><path d="M131.0 56h20"></path><g>
+<path d="M151.0 56h0.0"></path><path d="M464.0 56h0.0"></path><g class="non-terminal ">
+<path d="M151.0 56h0.0"></path><path d="M222.0 56h0.0"></path><rect height="22" width="71.0" x="151.0" y="45"></rect><text x="186.5" y="60">HEXDIG</text></g><path d="M222.0 56h10"></path><g>
+<path d="M232.0 56h0.0"></path><path d="M464.0 56h0.0"></path><path d="M232.0 56a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10"></path><g>
+<path d="M252.0 28h192.0"></path></g><path d="M444.0 28a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10"></path><path d="M232.0 56h20"></path><g>
+<path d="M252.0 56h0.0"></path><path d="M444.0 56h0.0"></path><g class="non-terminal ">
+<path d="M252.0 56h0.0"></path><path d="M323.0 56h0.0"></path><rect height="22" width="71.0" x="252.0" y="45"></rect><text x="287.5" y="60">HEXDIG</text></g><path d="M323.0 56h10"></path><g>
+<path d="M333.0 56h0.0"></path><path d="M444.0 56h0.0"></path><path d="M333.0 56a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path><g>
+<path d="M353.0 36h71.0"></path></g><path d="M424.0 36a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path><path d="M333.0 56h20"></path><g class="non-terminal ">
+<path d="M353.0 56h0.0"></path><path d="M424.0 56h0.0"></path><rect height="22" width="71.0" x="353.0" y="45"></rect><text x="388.5" y="60">HEXDIG</text></g><path d="M424.0 56h20"></path></g></g><path d="M444.0 56h20"></path></g></g><path d="M464.0 56h20"></path></g></g><path d="M484.0 56h10"></path><path d="M 494.0 56 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>

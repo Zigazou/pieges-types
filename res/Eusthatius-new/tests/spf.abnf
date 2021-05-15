@@ -1,0 +1,138 @@
+record        = version terms *SP
+version          = "v=spf1"
+
+terms            = *( 1*SP ( directive / modifier ) )
+
+directive        = [ qualifier ] mechanism
+qualifier        = "+" / "-" / "?" / "~"
+mechanism        = ( all / include
+                      / A / MX / PTR / IP4 / IP6 / exists )
+
+all              = "all"
+include          = "include"  ":" domain-spec
+A                = "a"      [ ":" domain-spec ] [ dual-cidr-length ]
+MX               = "mx"     [ ":" domain-spec ] [ dual-cidr-length ]
+PTR              = "ptr"    [ ":" domain-spec ]
+IP4              = "ip4"      ":" ip4-network   [ ip4-cidr-length ]
+IP6              = "ip6"      ":" ip6-network   [ ip6-cidr-length ]
+exists           = "exists"   ":" domain-spec
+
+modifier      = redirect / explanation / unknown-modifier
+redirect         = "redirect" "=" domain-spec
+explanation      = "exp" "=" domain-spec
+unknown-modifier = name "=" macro-string
+
+ip4-cidr-length  = "/" 1*DIGIT
+ip6-cidr-length  = "/" 1*DIGIT
+dual-cidr-length = [ ip4-cidr-length ] [ "/" ip6-cidr-length ]
+
+ip4-network      = qnum "." qnum "." qnum "." qnum
+qnum             = DIGIT                 ; 0-9
+                      / %x31-39 DIGIT       ; 10-99
+                      / "1" 2DIGIT          ; 100-199
+                      / "2" %x30-34 DIGIT   ; 200-249
+                      / "25" %x30-35        ; 250-255
+             ; conventional dotted quad notation.  e.g., 192.0.2.0
+ip6-network      = ; as per [RFC 3513], section 2.2
+               1*4HEXDIG 7(":" 1*4HEXDIG)
+             ; e.g., 2001:DB8::CD30
+domain-spec      = macro-string domain-end
+domain-end       = ( "." toplabel [ "." ] ) / macro-expand
+toplabel         = ( *alphanum ALPHA *alphanum ) /
+                   ( 1*alphanum "-" *( alphanum / "-" ) alphanum )
+                   ; LDH rule plus additional TLD restrictions
+                   ; (see [RFC3696], Section 2)
+
+alphanum         = ALPHA / DIGIT
+
+explain-string   = *( macro-string / SP )
+
+macro-string  = *( macro-expand / macro-literal )
+macro-expand  = ( "%{" macro-letter transformers *delimiter "}" )
+                      / "%%" / "%_" / "%-"
+macro-literal    = %x21-24 / %x26-7E
+                      ; visible characters except "%"
+macro-letter     = "s" / "l" / "o" / "d" / "i" / "p" / "h" /
+                      "c" / "r" / "t"
+transformers     = *DIGIT [ "r" ]
+delimiter  = "." / "-" / "+" / "," / "/" / "_" / "="
+
+name          = ALPHA *( ALPHA / DIGIT / "-" / "_" / "." )
+
+header-field     = "Received-SPF:" [CFWS] result FWS [comment FWS]
+                      [ key-value-list ] CRLF
+
+result           = "Pass" / "Fail" / "SoftFail" / "Neutral" /
+                      "None" / "TempError" / "PermError"
+
+key-value-list   = key-value-pair *( ";" [CFWS] key-value-pair )
+                      [";"]
+
+key-value-pair   = key [CFWS] "=" ( dot-atom / quoted-string )
+
+key              = "client-ip" / "envelope-from" / "helo" /
+                      "problem" / "receiver" / "identity" /
+                       mechanism / "x-" name / name
+
+identity         = "mailfrom"   ; for the "MAIL FROM" identity
+                      / "helo"     ; for the "HELO" identity
+                      / name       ; other identities
+
+
+; From RFC 2822
+
+atext           =       ALPHA / DIGIT / ; Any character except controls,
+                        "!" / "#" /     ;  SP, and specials.
+                        "$" / "%" /     ;  Used for atoms
+                        "&" / "'" /
+                        "*" / "+" /
+                        "-" / "/" /
+                        "=" / "?" /
+                        "^" / "_" /
+                        "`" / "{" /
+                        "|" / "}" /
+                        "~"
+
+quoted-pair     =       ("\" text) / obs-qp
+
+dot-atom        =       [CFWS] dot-atom-text [CFWS]
+dot-atom-text   =       1*atext *("." 1*atext)
+qtext           =       NO-WS-CTL /     ; Non white space controls
+                        %d33 /          ; The rest of the US-ASCII
+                        %d35-91 /       ;  characters not including "\"
+                        %d93-126        ;  or the quote character
+NO-WS-CTL       =       %d1-8 /         ; US-ASCII control characters
+                        %d11 /          ;  that do not include the
+                        %d12 /          ;  carriage return, line feed,
+                        %d14-31 /       ;  and white space characters
+                        %d127
+text            =       %d1-9 /         ; Characters excluding CR and LF
+                        %d11 /
+                        %d12 /
+                        %d14-127 /
+                        obs-text
+
+qcontent        =       qtext / quoted-pair
+quoted-string   =       [CFWS]
+                        DQUOTE *([FWS] qcontent) [FWS] DQUOTE
+                        [CFWS]
+   
+obs-qp          =       "\" (%d0-127)
+obs-text        =       *LF *CR *(obs-char *LF *CR)
+obs-FWS         =       1*WSP *(CRLF 1*WSP)
+obs-char        =       %d0-9 / %d11 /          ; %d0-127 except CR and
+                        %d12 / %d14-127         ;  LF
+obs-utext       =       obs-text
+
+ctext           =       NO-WS-CTL /     ; Non white space controls
+                        %d33-39 /       ; The rest of the US-ASCII
+                        %d42-91 /       ;  characters not including "(",
+                        %d93-126        ;  ")", or "\"
+
+ccontent        =       ctext / quoted-pair / comment
+
+comment         =       "(" *([FWS] ccontent) [FWS] ")"
+CFWS            =       *([FWS] comment) (([FWS] comment) / FWS)
+
+FWS             =       ([*WSP CRLF] 1*WSP) /   ; Folding white space
+                        obs-FWS

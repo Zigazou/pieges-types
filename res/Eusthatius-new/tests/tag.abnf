@@ -1,0 +1,17 @@
+; A very simple language, vaguely resembling language tags of RFC 4646
+; A tag is made of one letter then two or three letters then four to
+; five letter-or-digits, then six to eight digits.  The dash is the
+; separator
+
+tag = first ["-" second] ["-" third] ["-" fourth]
+
+first = 1ALPHA
+
+second = 2*3ALPHA
+
+third = 4*5(ALPHA / DIGIT)
+
+fourth = 5*8DIGIT
+
+
+

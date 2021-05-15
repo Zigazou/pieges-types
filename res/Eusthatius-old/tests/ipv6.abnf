@@ -1,0 +1,36 @@
+; Unlike IPv4, the IPv6 addresses have a standard text representation,
+; described in RFC 4291, 2.2.
+
+; But there is no formal ABNF grammar. There was one in RFC 2373,
+; appendix B, that we reuse here, after fixing it (it is syntactically
+; incorrect, for instance with "|" instead of "/" for the
+; alternation). 
+
+; We left another bug it contains: it does not limit the number of
+; "hexseq" so addresses like
+; 501:F5:C:5:A7:df:F4CA:2:0A4d:7::ed9:BdD:7C:c:Ae3:7:4F are legal. It
+; is unclear wether IPv6 addresses can be represented by a
+; context-free grammar (without the compression of nulls into "::", it
+; would be possible) without resorting to an explicit enumeration,
+; like RFC 3987 does.
+
+; The ABNF grammar was removed by RFC 3513, which says "Removed the
+; ABNF Description of Text Representations Appendix." but gives no
+; reason. I assume it is the problem indicated above. One can find a
+; discussion of the problem in
+; http://www.fysh.org/~zefram/text_rep/draft-main-ipaddr-text-rep.txt.
+
+; As an expected result, some RFCs define their own ABNF for IPv6, for
+; instance, RFC 3986 and 3987 :-( It is very different from the one we
+; use but it seems more correct (but less easy to read). RFC 3632 also
+; defines its own grammar, in a very distinct way, but it works as
+; well.
+
+IPv6address = hexpart [ ":" IPv4address ]
+IPv4address = 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT
+
+IPv6prefix  = hexpart "/" 1*2DIGIT
+
+hexpart = hexseq / hexseq "::" [ hexseq ] / "::" [ hexseq ]
+hexseq  = hex4 *( ":" hex4)
+hex4    = 1*4HEXDIG

@@ -1,0 +1,51 @@
+<svg class="railroad-diagram" height="152" viewBox="0 0 711.5 152" width="711.5" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(.5 .5)">
+<style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style><g>
+<path d="M20 81v20m10 -20v20m-10 -10h20"></path></g><g>
+<path d="M40 91h0.0"></path><path d="M671.5 91h0.0"></path><path d="M40.0 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10"></path><g>
+<path d="M60.0 31h180.5"></path><path d="M471.0 31h180.5"></path><g class="terminal ">
+<path d="M240.5 31h0.0"></path><path d="M269.0 31h0.0"></path><rect height="22" rx="10" ry="10" width="28.5" x="240.5" y="20"></rect><text x="254.75" y="35">&#91;</text></g><path d="M269.0 31h10"></path><g>
+<path d="M279.0 31h0.0"></path><path d="M432.5 31h0.0"></path><path d="M279.0 31h20"></path><g class="non-terminal ">
+<path d="M299.0 31h0.0"></path><path d="M412.5 31h0.0"></path><rect height="22" width="113.5" x="299.0" y="20"></rect><text x="355.75" y="35">IPv6address</text></g><path d="M412.5 31h20"></path><path d="M279.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal ">
+<path d="M299.0 61h8.5"></path><path d="M404.0 61h8.5"></path><rect height="22" width="96.5" x="307.5" y="50"></rect><text x="355.75" y="65">IPvFuture</text></g><path d="M412.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M432.5 31h10"></path><g class="terminal ">
+<path d="M442.5 31h0.0"></path><path d="M471.0 31h0.0"></path><rect height="22" rx="10" ry="10" width="28.5" x="442.5" y="20"></rect><text x="456.75" y="35">&#93;</text></g></g><path d="M651.5 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10"></path><path d="M40.0 91h20"></path><g>
+<path d="M60.0 91h0.0"></path><path d="M651.5 91h0.0"></path><g class="non-terminal ">
+<path d="M60.0 91h0.0"></path><path d="M156.5 91h0.0"></path><rect height="22" width="96.5" x="60.0" y="80"></rect><text x="108.25" y="95">dec-octet</text></g><path d="M156.5 91h10"></path><path d="M166.5 91h10"></path><g class="terminal ">
+<path d="M176.5 91h0.0"></path><path d="M205.0 91h0.0"></path><rect height="22" rx="10" ry="10" width="28.5" x="176.5" y="80"></rect><text x="190.75" y="95">.</text></g><path d="M205.0 91h10"></path><path d="M215.0 91h10"></path><g class="non-terminal ">
+<path d="M225.0 91h0.0"></path><path d="M321.5 91h0.0"></path><rect height="22" width="96.5" x="225.0" y="80"></rect><text x="273.25" y="95">dec-octet</text></g><path d="M321.5 91h10"></path><path d="M331.5 91h10"></path><g class="terminal ">
+<path d="M341.5 91h0.0"></path><path d="M370.0 91h0.0"></path><rect height="22" rx="10" ry="10" width="28.5" x="341.5" y="80"></rect><text x="355.75" y="95">.</text></g><path d="M370.0 91h10"></path><path d="M380.0 91h10"></path><g class="non-terminal ">
+<path d="M390.0 91h0.0"></path><path d="M486.5 91h0.0"></path><rect height="22" width="96.5" x="390.0" y="80"></rect><text x="438.25" y="95">dec-octet</text></g><path d="M486.5 91h10"></path><path d="M496.5 91h10"></path><g class="terminal ">
+<path d="M506.5 91h0.0"></path><path d="M535.0 91h0.0"></path><rect height="22" rx="10" ry="10" width="28.5" x="506.5" y="80"></rect><text x="520.75" y="95">.</text></g><path d="M535.0 91h10"></path><path d="M545.0 91h10"></path><g class="non-terminal ">
+<path d="M555.0 91h0.0"></path><path d="M651.5 91h0.0"></path><rect height="22" width="96.5" x="555.0" y="80"></rect><text x="603.25" y="95">dec-octet</text></g></g><path d="M651.5 91h20"></path><path d="M40.0 91a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"></path><g class="non-terminal ">
+<path d="M60.0 121h251.75"></path><path d="M399.75 121h251.75"></path><rect height="22" width="88.0" x="311.75" y="110"></rect><text x="355.75" y="125">reg-name</text></g><path d="M651.5 121a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"></path></g><path d="M 671.5 91 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g></svg>

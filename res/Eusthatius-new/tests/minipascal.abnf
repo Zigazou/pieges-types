@@ -1,0 +1,23 @@
+program = "begin " listinstr " end"
+
+listinstr = (instr listinstr ) / instr
+
+instr = ("int " id /
+        id " := " expr / 
+        "print " expr /
+        "while " "(" cond ")" "do " listinstr " od")
+        "; "
+
+expr = (expr "-" expr1) / expr1 
+
+expr1 = (expr1 "*" expr2) / expr2
+
+expr2 = id / num / "(" expr ")"
+
+cond = expr condsymb expr
+
+condsymb = ">" / "<" / ">=" / "<=" / "!=" / "|" / "="
+
+id = 1*ALPHA
+
+num = 1*DIGIT

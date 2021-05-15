@@ -1,0 +1,72 @@
+; RFC 3632 on RRP
+
+; Lexical Tokens
+
+hexdigit = digit / %X41-46 / %x61-66   ; 0-9 / A-F / a-f
+doubleoctet = 1*4hexdigit
+
+docolon = doubleoctet colon
+
+colondo = colon doubleoctet
+
+ip-address =  ip-address-v4 / ip-address-v6
+
+; ipv4 addresses
+ip-address-v4 = 1*3digit dot 1*3digit dot 1*3digit dot 1*3digit
+
+ip-address-v6 =  ip-address-v6-standard / ip-address-v6-compressed
+; Standard form of IPv6 addresses
+; 8 hexdigit strings of length 1-4 separated by colons
+;
+; Eg: 10AA:0:0:00:8:800:200C:417A
+
+ip-address-v6-standard = doubleoctet 7colondo
+
+; Compressed form of IPv6 addresses
+; Runs of zero-value octets are represented by '::'
+;
+; Examples:
+;       ::                        ==> 0:0:0:0:0:0:0:0
+;
+;       1::                       ==> 1:0:0:0:0:0:0:0
+;       2:2::                     ==> 2:2:0:0:0:0:0:0
+;       7:7:7:7:7:7:7::           ==> 7:7:7:7:7:7:7:0
+;
+;       ::1                       ==> 0:0:0:0:0:0:0:1
+;       ::2:2                     ==> 0:0:0:0:0:0:2:2
+;       ::7:7:7:7:7:7:7           ==> 0:7:7:7:7:7:7:7
+;
+;       E::1                      ==> E:0:0:0:0:0:0:1
+;       E::2:2                    ==> E:0:0:0:0:0:2:2
+;       E::6:6:6:6:6:6            ==> E:0:6:6:6:6:6:6
+;
+;       E:E::1                    ==> E:E:0:0:0:0:0:1
+;       E:E::2:2                  ==> E:E:0:0:0:0:2:2
+;       E:E::5:5:5:5:5            ==> E:E:0:5:5:5:5:5
+;
+;       E:E:E::1                  ==> E:E:E:0:0:0:0:1
+;       E:E:E::2:2                ==> E:E:E:0:0:0:2:2
+;       E:E:E::4:4:4:4            ==> E:E:E:0:4:4:4:4
+;
+;       E:E:E:E::1                ==> E:E:E:E:0:0:0:1
+;       E:E:E:E::2:2              ==> E:E:E:E:0:0:2:2
+;       E:E:E:E::3:3:3            ==> E:E:E:E:0:3:3:3
+;
+;       E:E:E:E:E::1              ==> E:E:E:E:E:0:0:1
+;       E:E:E:E:E::2:2            ==> E:E:E:E:E:0:2:2
+;
+;       E:E:E:E:E:E::1            ==> E:E:E:E:E:E:0:1
+
+ip-address-v6-compressed =  colon colon
+ip-address-v6-compressed =/ 1*7docolon colon
+ip-address-v6-compressed =/ colon 1*7colondo
+ip-address-v6-compressed =/ docolon 1*6colondo
+ip-address-v6-compressed =/ 2docolon 1*5colondo
+ip-address-v6-compressed =/ 3docolon 1*4colondo
+ip-address-v6-compressed =/ 4docolon 1*3colondo
+ip-address-v6-compressed =/ 5docolon 1*2colondo
+ip-address-v6-compressed =/ 6docolon colondo
+
+; These terminals are missing in the RFC :-(
+colon = ":"
+dot = "."

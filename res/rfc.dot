@@ -1,0 +1,211 @@
+digraph RFC {
+    // Years
+    subgraph years {
+        node [shape=plaintext];
+        1988
+            -> 1994 -> 1995 -> 1996 -> 1997 -> 1998 -> 1999
+            -> 2000 -> 2002 -> 2003 -> 2004 -> 2005 -> 2006 -> 2007 -> 2008 -> 2009
+            -> 2010 -> 2011 -> 2012 -> 2013 -> 2014 -> 2015 -> 2016 -> 2017 -> 2018 -> 2019
+            -> 2020 -> 2021;
+    }
+
+    node [shape=record];
+
+    // Obsolete RFCs
+    {
+        node [color=red, fontcolor=red];
+        RFC1647; RFC1738; RFC1808; RFC1959; RFC2192; RFC2255; RFC2368; RFC2396;
+        RFC2717; RFC2718; RFC2732; RFC2806; RFC3454; RFC3490; RFC4395; RFC5785;
+        RFC7320; RFC7564;
+    }
+
+    // URI Schemes
+    {
+        node [style=filled, fillcolor=yellow];
+        RFC2017; RFC2056; RFC2122; RFC2224; RFC2384; RFC2397; RFC2838; RFC3368;
+        RFC3508; RFC3510; RFC3966; RFC3986; RFC4151; RFC4156;
+        RFC4157; RFC4248; RFC4266; RFC4452; RFC4467; RFC4501; RFC4516; RFC5092; RFC5538; RFC5593; RFC5630;
+        RFC5724;
+        RFC5781; RFC6068; RFC6167; RFC6196; RFC6270; RFC6455; RFC6694; RFC7064;
+        RFC7472; RFC7512; RFC7565; RFC7869; RFC8089; RFC8589; RFC8905; RFC8959;
+    }
+
+    // Internationalization
+    {
+        node [style=filled, fillcolor=green];
+        RFC3454; RFC3490; RFC3491; RFC3987; RFC3492; RFC5890; RFC5891; RFC5892;
+        RFC5893; RFC5894; RFC5895; RFC7564; RFC8264;
+    }
+
+    // RFC numbers and titles
+    RFC1041 [label="{1041 | Telnet 3270\nRegime Option}"];
+    RFC1630 [label="{1630 | Universal Resource\nIdentifiers in WWW}"];
+    RFC1647 [label="{1647 | TN3270 Enhancements}"];
+    RFC1736 [label="{1736 | Function\nRecommandations\nfor Internet Resource\nLocators}"];
+    RFC1738 [label="{1738 | Uniform Resource\nLocators (URL)}", group="uri_scheme"];
+    RFC1808 [label="{1808 | Relative Uniform\nResource Locators}", group="uri_scheme"];
+    RFC1959 [label="{1959 | An LDAP\nURL Format}", group="uri_scheme"];
+    RFC2017 [label="{2017 | Definition of\nthe URL MIME\nExternal-Body\nAccess-Type}", group="uri_scheme"];
+    RFC2056 [label="{2056 | Uniform Resource\nLocators for\nZ39.50}", group="uri_scheme"];
+    RFC2122 [label="{2122 | VEMMI URL\nSpecification}", group="uri_scheme"];
+    RFC2192 [label="{2192 | IMAP\nURL Scheme}", group="uri_scheme"];
+    RFC2224 [label="{2224 | NFS\nURL Scheme}", group="uri_scheme"];
+    RFC2255 [label="{2255 | The LDAP\nURL Format}", group="uri_scheme"];
+    RFC2355 [label="{2355 | TN3270 Enhancements}"];
+    RFC2368 [label="{2368 | The mailto\nURL scheme}", group="uri_scheme"];
+    RFC2369 [label="{2369 | URLs as\nMeta-Syntax}"];
+    RFC2384 [label="{2384 | POP\nURL Scheme}", group="uri_scheme"];
+    RFC2396 [label="{2396 | Uniform Resource\nIdentifiers (URI):\nGeneric Syntax}", group="uri_scheme"];
+    RFC2397 [label="{2397 | The 'data'\nURL scheme}", group="uri_scheme"];
+    RFC2717 [label="{2717 | Registration Procedures\nfor URL Scheme Names}", group="uri_scheme"];
+    RFC2718 [label="{2718 | Guidelines for\nnew URL Schemes}", group="uri_scheme"];
+    RFC2732 [label="{2732 | Format for Literal\nIPv6 Addresses in URL's}"];
+    RFC2806 [label="{2806 | URLs for\nTelephone Calls}", group="uri_scheme"];
+    RFC2838 [label="{2838 | URI for\nTelevision\nBroadcasts}", group="uri_scheme"];
+    RFC2910 [label="{2910 | Internet Printing\nProtocol/1.1:\nEncoding and Transport}"];
+    RFC2911 [label="{2911 | Internet Printing\nProtocol/1.1:\nModel and Semantics}"];
+    RFC3305 [label="{3305 | URIs, URLs, and URNs:\nClarifications and\nRecommendations}"];
+    RFC3368 [label="{3368 | The 'go'\nURI Scheme}", group="uri_scheme"];
+    RFC3454 [label="{3454 | Preparation of\nInternationalized\nStrings (stringprep)}"];
+    RFC3490 [label="{3490 | Internationalizing\nDomain Names in\nApplications (IDNA)}"];
+    RFC3491 [label="{3491 | Nameprep:\nA Stringprep Profile\nfor Internationalized\nDomain Names (IDN)}"];
+    RFC3492 [label="{3492 | Punycode:\nA Bootstring encoding\nof Unicode for\nInternationalized\nDomain Names in\nApplications (IDNA)}"];
+    RFC3508 [label="{3508 | H.323\nURL Scheme\nRegistration}", group="uri_scheme"];
+    RFC3510 [label="{3510 | Internet Printing\nProtocol/1.1:\nIPP\nURL Schem}", group="uri_scheme"];
+    RFC3966 [label="{3966 | The tel URI for\nTelephone Numbers}", group="uri_scheme"];
+    RFC3986 [label="{3986 | Uniform Resource\nIdentifiers (URI):\nGeneric Syntax}", group="uri_scheme"];
+    RFC3987 [label="{3987 | Internationalized Resource\nIdentifiers (IRIs)}"];
+    RFC4151 [label="{4151 | The 'tag'\nURI Scheme}", group="uri_scheme"];
+    RFC4156 [label="{4156 | The wais\nURI Scheme}", group="uri_scheme"];
+    RFC4157 [label="{4157 | The prospero\nURI Scheme}", group="uri_scheme"];
+    RFC4248 [label="{4248 | The telnet\nURI Scheme}", group="uri_scheme"];
+    RFC4266 [label="{4266 | The gopher\nURI Scheme}", group="uri_scheme"];
+    RFC4395 [label="{4395 | Guidelines and\nRegistration Procedures\nfor New URI Schemes}", group="uri_scheme"];
+    RFC4452 [label="{4452 | The 'info'\nURI Scheme}", group="uri_scheme"];
+    RFC4467 [label="{4467 | Internet Message\nAccess Protocol\n(IMAP) - URLAUTH\nExtension}", group="uri_scheme"];
+    RFC4501 [label="{4501 | DNS URI}", group="uri_scheme"];
+    RFC4516 [label="{4516 | LDAP: URL}", group="uri_scheme"];
+    RFC5092 [label="{5092 | IMAP\nURL Scheme}", group="uri_scheme"];
+    RFC5341 [label="{5341 | IANA Registry for\nTEL URI Parameters}"];
+    RFC5538 [label="{5538 | The 'news' and 'nntp'\nURI Schemes}", group="uri_scheme"];
+    RFC5593 [label="{5593 | Internet Message\nAccess Protocol\n(IMAP) - URL\nAccess Identifier\nExtension}", group="uri_scheme"];
+    RFC5630 [label="{5630 | The Use of the\nSIPS URI Scheme\nin the Session\nInitiation Protocol\n(SIP)}"];
+    RFC5724 [label="{5724 | URI Scheme for\nGlobal System for\nMobile Communications\n(GSM) Short Message\nService (SMS)}"];
+    RFC5781 [label="{5781 | The rsync\nURI Scheme}", group="uri_scheme"];
+    RFC5785 [label="{5785 | Defining Well-Known\nUniform Resource\nIdentifiers (URIs)}"];
+    RFC5890 [label="{5890 | Internationalized\nDomain Names for\nApplications (IDNA):\nDefinitions and\nDocument Framework}"];
+    RFC5891 [label="{5891 | Internationalized\nDomain Names in\nApplications (IDNA):\nProtocol}"];
+    RFC5892 [label="{5892 | The Unicode Code\nPoints and\nInternationalized\nDomain Names for\nApplications (IDNA)}"];
+    RFC5893 [label="{5893 | Right-to-Left\nScripts for\nInternationalized\nDomain Names\nfor Applications\n(IDNA)}"];
+    RFC5894 [label="{5894 | Internationalized\nDomain Names for\nApplications (IDNA):\nBackground, Explanation,\nand Rationale}"];
+    RFC5895 [label="{5895 | Mapping Characters\nfor Internationalized\nDomain Names\nin Applications\n(IDNA) 2008}"];
+    RFC6068 [label="{6068 | The 'mailto'\nURI Scheme}", group="uri_scheme"];
+    RFC6167 [label="{6167 | URI Scheme for\nJava(tm) Message\nService 1.0}", group="uri_scheme"];
+    RFC6196 [label="{6196 | Moving mailserver:\nURI Scheme to Historic}"];
+    RFC6270 [label="{6270 | The 'tn3270'\nURI Scheme}", group="uri_scheme"];
+    RFC6454 [label="{6454 | The Web\nOrigin Concept}"];
+    RFC6455 [label="{6455 | The WebSocket\nProtocol}"];
+    RFC6694 [label="{6694 | The 'about'\nURI Scheme}", group="uri_scheme"];
+    RFC6874 [label="{6874 | Representing IPv6\nZone Identifiers in\nAddress Literals and\nUniform Resource Identifiers}"];
+    RFC7064 [label="{7064 | URI Scheme\nfor the Session\nTraversal Utilities\nfor NAT (STUN)\nProtocol}", group="uri_scheme"];
+    RFC7230 [label="{7230 | Hypertext Transfer\nProtocol (HTTP/1.1):\nMessage Syntax\nand Routing}"];
+    RFC7320 [label="{7320 | URI Design and Ownership}", group="uri_design"];
+    RFC7472 [label="{7472 | Internet Printing\nProtocol (IPP)\nover HTTPS Transport\nBinding and the\n'ipps' URI Scheme}", group="uri_scheme"];
+    RFC7512 [label="{7512 | The PKCS #11\nURI Scheme}", group="uri_scheme"];
+    RFC7564 [label="{7564 | PRECIS Framework:\nPreparation, Enforcement,\nand Comparison of\nInternationalized Strings\nin Application Protocols}"];
+    RFC7565 [label="{7565 | The'acct'\nURI Scheme}", group="uri_scheme"];
+    RFC7595 [label="{7595 | Guidelines and\nRegistration Procedures\nfor URI Schemes}", group="uri_scheme"];
+    RFC7869 [label="{7869 | The 'vnc'\nURI Scheme}", group="uri_scheme"];
+    RFC7936 [label="{7936 | Clarifying Registry\nProcedures for the\nWebSocket Subprotocol\nName Registry}"];
+    RFC8089 [label="{8089 | The 'file'\nURI Scheme}", group="uri_scheme"];
+    RFC8264 [label="{8264 | PRECIS Framework:\nPreparation, Enforcement,\nand Comparison of\nInternationalized Strings\nin Application Protocols}"];
+    RFC8307 [label="{8307 | Well-Known URIs for\nthe WebSocket\nProtocol}"];
+    RFC8441 [label="{8441 | Bootstrapping\nWebSockets\nwith HTTP/2}"];
+    RFC8589 [label="{8589 | The 'leaptofrogans'\nURI Scheme}", group="uri_scheme"];
+    RFC8615 [label="{8615 | Well-Known\nUniform Resource\nIdentifiers (URIs)}", group="uri_scheme"];
+    RFC8820 [label="{8820 | URI Design and Ownership}", group="uri_design"];
+    RFC8905 [label="{8905 | The 'payto'\nURI Scheme\nfor Payments}", group="uri_scheme"];
+    RFC8959 [label="{8959 | The 'secret-token'\n URI Scheme}", group="uri_scheme"];
+
+    // Year ranking
+    { rank = same; 1988; RFC1041; }
+    { rank = same; 1994; RFC1630; RFC1647; RFC1738; }
+    { rank = same; 1995; RFC1736; RFC1808; }
+    { rank = same; 1996; RFC1959; RFC2017; RFC2056; }
+    { rank = same; 1997; RFC2122; RFC2192; RFC2224; RFC2255; }
+    { rank = same; 1998; RFC2355; RFC2368; RFC2369; RFC2384; RFC2396; RFC2397; }
+    { rank = same; 1999; RFC2717; RFC2718; RFC2732; }
+    { rank = same; 2000; RFC2806; RFC2838; RFC2910; RFC2911; }
+    { rank = same; 2002; RFC3305; RFC3368; RFC3454; }
+    { rank = same; 2003; RFC3490; RFC3491; RFC3492; RFC3508; RFC3510; }
+    { rank = same; 2004; RFC3966; }
+    { rank = same; 2005; RFC3986; RFC3987; RFC4151; RFC4156; RFC4157; RFC4248; RFC4266; }
+    { rank = same; 2006; RFC4395; RFC4452; RFC4467; RFC4501; RFC4516; }
+    { rank = same; 2007; RFC5092; }
+    { rank = same; 2008; RFC5341; }
+    { rank = same; 2009; RFC5593; RFC5630; }
+    { rank = same; 2010; RFC5538; RFC5724; RFC5781; RFC5785; RFC5890; RFC5891; RFC5892; RFC5893; RFC5894; RFC5895; RFC6068;}
+    { rank = same; 2011; RFC6167; RFC6196; RFC6270; RFC6454; RFC6455; }
+    { rank = same; 2012; RFC6694; }
+    { rank = same; 2013; RFC7064; RFC6874; }
+    { rank = same; 2014; RFC7230; RFC7320; }
+    { rank = same; 2015; RFC7472; RFC7512; RFC7564; RFC7565; RFC7595; }
+    { rank = same; 2016; RFC7869; RFC7936; }
+    { rank = same; 2017; RFC8089; RFC8264; }
+    { rank = same; 2018; RFC8441; }
+    { rank = same; 2019; RFC8589; RFC8615; }
+    { rank = same; 2020; RFC8820; RFC8905; }
+    { rank = same; 2021; RFC8959; }
+
+    // Updated by
+    {
+        edge [style=dashed];
+        RFC1041 -> RFC6270 [labeljust=0, label="updated by"];
+        RFC1738 -> RFC1808, RFC2368, RFC2396, RFC3986, RFC6196, RFC6270, RFC8089;
+        RFC1808 -> RFC2368, RFC2396;
+        RFC2355 -> RFC6270;
+        RFC2396 -> RFC2732;
+        RFC2910 -> RFC7472;
+        RFC2911 -> RFC7472;
+        RFC3492 -> RFC5891;
+        RFC3966 -> RFC5341;
+        RFC3986 -> RFC6874, RFC7320, RFC8820;
+        RFC4467 -> RFC5092;
+        RFC5092 -> RFC5593;
+        RFC6455 -> RFC7936, RFC8307, RFC8441;
+        RFC7230 -> RFC8615;
+        RFC7595 -> RFC8615;
+    }
+
+    // Obsoleted by
+    {
+        edge [color=red];
+        RFC1647 -> RFC2355 [label="obsoleted by"];
+        RFC1738 -> RFC4248, RFC4266;
+        RFC1808 -> RFC3986;
+        RFC1959 -> RFC2255;
+        RFC2192 -> RFC5092;
+        RFC2368 -> RFC6068;
+        RFC2396 -> RFC3986;
+        RFC2717 -> RFC4395;
+        RFC2718 -> RFC4395;
+        RFC2732 -> RFC3986;
+        RFC2806 -> RFC3966;
+        RFC3454 -> RFC7564;
+        RFC3490 -> RFC5890, RFC5891;
+        RFC3491 -> RFC5891;
+        RFC4395 -> RFC7595;
+        RFC5785 -> RFC8615;
+        RFC7320 -> RFC8820;
+        RFC7564 -> RFC8264;
+    }
+
+    // Related to
+    {
+        edge [style=bold,color=blue,dir=none];
+        RFC3986 -> RFC3987;
+        RFC8820 -> RFC8615;
+        RFC1630 -> RFC1736, RFC1738;
+        RFC3454 -> RFC3490, RFC3491, RFC3492;
+    }
+}
