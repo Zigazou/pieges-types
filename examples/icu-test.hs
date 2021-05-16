@@ -50,7 +50,9 @@ exampleNormalizationStrings =
     , "Œuf"
     , "OEuf"
     , "Foreﬆier"
+    , "Te\x02f0\x0301"
     ]
+    
 
 describeNormalizations :: [ NormalizationMode ] -> T.Text -> IO ()
 describeNormalizations normModes string = do
