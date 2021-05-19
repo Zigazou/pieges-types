@@ -85,17 +85,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.13971893"
-     inkscape:cx="4938.5238"
-     inkscape:cy="2483.2892"
+     inkscape:zoom="0.14640078"
+     inkscape:cx="1246.0394"
+     inkscape:cy="3747.4947"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="3141"
-     inkscape:window-height="1813"
-     inkscape:window-x="583"
-     inkscape:window-y="224"
+     inkscape:window-width="2224"
+     inkscape:window-height="1392"
+     inkscape:window-x="808"
+     inkscape:window-y="484"
      inkscape:window-maximized="0"
      borderlayer="true"
      units="px"
@@ -284,5 +284,16 @@
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#beffc7;stroke-width:36.3666;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker11443);stop-color:#000000;stop-opacity:1"
        d="M -1648.5456,-8.0604858 -1473.2152,167.27002"
        id="path11439" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:condensed;font-size:49.1673px;line-height:1.2;font-family:'IBM Plex Sans Condensed';-inkscape-font-specification:'IBM Plex Sans Condensed,  Medium Italic Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.0963715;stroke-miterlimit:4;stroke-dasharray:none"
+       x="-1384.6788"
+       y="35.730473"
+       id="text11210-2"><tspan
+         sodipodi:role="line"
+         x="-1384.6788"
+         y="35.730473"
+         style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:condensed;font-family:'IBM Plex Sans Condensed';-inkscape-font-specification:'IBM Plex Sans Condensed,  Medium Italic Condensed';text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.0963715;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan11208-3">forme canonique</tspan></text>
   </g>
 </svg>

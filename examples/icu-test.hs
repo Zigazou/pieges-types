@@ -44,13 +44,15 @@ exampleNormalizationStrings =
     , "Frédéric"
     , "Fre\769de\769ric"
     , "ＦＲＥ\769ＤＥ\769ＲＩＣ"
+    , "Fre\x034f\769de\x034f\769ric"
     , "Eﬃcace"
     , "Efficace"
     , "Eﬃcace"
     , "Œuf"
     , "OEuf"
     , "Foreﬆier"
-    , "Te\x02f0\x0301"
+    , "d\847e"
+    , "F̶̡̨̜̖͇̲̈́̿͋̄̽̋́̈́̀̀͒͌͊̊̓͌̏̐̑͌͒̐̉̈͒̕̚͝r̵̨̢̢̛̛̛͖͍͚̲̣̼͔͈̟͎̙̭̜̮̗̰͚̖͓̘̼̱̼͇͈͔̆̅͗̊̂̅̓̀̑́͛̐̄̐̾̒̈̉͌́é̷̢̛͕̭̬̣̣͕̲͍̹̭̖͔̗͉̯̻͙͙̰͓͎̃́̿͒̒̏̿̏͐̾͜d̷̡̙̳̫̠͓͎̗͉͉̘̣̱͙̮̅̄͒́̏̇́̚͜͜é̶̟͚̭͈͈͔̩̦̤̦̘̪̪̟̗̲̪̹͓̩̺͂̑͂́̀͜r̸̛̼͙͔͚͒̈́́̂͐̑́̈̉̌i̷̢̧͈͓̮̬͚͙̻͇͍̗̟̯͉̗̣͕̣̩̪̱̫̩̩͙̠̝̒̀͂̎́͗̄̌̌̀͑̎͒̾̔̎̾̅́̐̓̐̀̽͑̌̾͝͝ͅͅc̷̢̨̳̠̱̰̰̝̮̖̖̦̦͔̠̰͖͈̺͔̻̝͕̞̫͙͓̮̩̲̱̍͋͑̏̈̅̑̏͗̚̕͜͝ͅ"
     ]
     
 
@@ -74,7 +76,9 @@ describeNormalizations normModes string = do
 exampleComparisonStrings :: [ (T.Text, T.Text) ]
 exampleComparisonStrings =
     [ ("Frédéric", "Fre\769de\769ric")
+    , ("Frédéric", "Fre\714de\714ric")
     , ("ＦＲＥ\769ＤＥ\769ＲＩＣ", "FRÉDÉRIC")
+    , ("ＦＲＥ\714ＤＥ\714ＲＩＣ", "FRÉDÉRIC")
     , ("Eﬃcace", "Efficace")
     , ("Eﬃcace", "Efficaces")
     , ("Efficace", "Efficaces")
@@ -101,6 +105,7 @@ describeComparison (stringA, stringB) = do
 exampleCollationStrings :: [ [T.Text] ]
 exampleCollationStrings =
     [ [ "Frédéric"
+      , "Fre\x034f\769de\x034f\769ric"
       , "Fre\769de\769ric"
       ]
     , [ "Eﬃcace"
@@ -188,11 +193,16 @@ exampleTranslitStrings =
     [ "Frédéric"
     , "Fre\769de\769ric"
     , "Fre\769\769de\769\769ric"
+    , "Fre\x034f\769de\x034f\769ric"
     , "Eﬃcace"
     , "bœuf"
     , "Foreﬆier"
     , "こんにちは"
+    , "どこで生れたかとんと見当がつかぬ。"
     , "φιλοσοφία"
+    , "First paragraph\x2029Second paragraph"
+    , "First line\x2028Second line"
+    , "First line\x0085Next line"
     ]
 
 describeTranslit :: T.Text -> IO ()
